@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 30px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        .form-group input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .wait-message {
+            font-size: 20px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .qr-code {
+            margin-top: 20px;
+        }
+        /* Gradient Button with Hover Effect */
+.button {
+    background: linear-gradient(135deg, #6e7bff, #56c8f2);
+    color: white;
+    padding: 14px 28px;
+    font-size: 18px;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Payment Section -->
+    <div class="container" id="payment-section">
+        <h1>Payment Instructions</h1>
+        <p>Please scan the QR code below to make a payment.</p>
+
+        <!-- QR Code for Payment -->
+        <div class="qr-code">
+            <img src="https://via.placeholder.com/150" alt="QR Code for Payment" width="150"> <!-- Replace with your bank QR code -->
+        </div>
+
+        <p>After making the payment, upload the payment receipt screenshot below.</p>
+
+        <form id="payment-form">
+            <input type="file" id="receipt-upload" name="receipt-upload" required />
+            <br />
+            <button type="submit" class="button">Submit Payment Receipt</button>
+        </form>
+    </div>
+
+    <!-- Email Submission Section (Initially Hidden) -->
+    <div class="container hidden" id="email-section">
+        <h1>Enter Your Gmail</h1>
+        <p>Once payment is made, please enter your Gmail address to proceed.</p>
+
+        <form id="email-form">
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Enter your Gmail" required />
+            </div>
+            <button type="submit" class="button">Submit Email</button>
+        </form>
+    </div>
+
+    <!-- Wait for Confirmation Section (Initially Hidden) -->
+    <div class="container hidden" id="confirmation-section">
+        <h1 class="wait-message">Thank you! Please wait for confirmation.</h1>
+    </div>
+
+    <script>
+        // Handle the Payment Receipt Submission
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission
+            
+            // Hide payment section and show email section
+            document.getElementById('payment-section').classList.add('hidden');
+            document.getElementById('email-section').classList.remove('hidden');
+        });
+
+        // Handle the Email Submission
+        document.getElementById('email-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission
+
+            // Hide email section and show confirmation section
+            document.getElementById('email-section').classList.add('hidden');
+            document.getElementById('confirmation-section').classList.remove('hidden');
+        });
+    </script>
+
+</body>
+</html>
